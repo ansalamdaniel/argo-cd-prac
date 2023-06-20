@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 2
+  replicas: 7
   selector:
     matchLabels:
       app: myapp
@@ -13,12 +13,12 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: nginx
-        image: nginx
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+      - image: nginx
+        name: nginx
         ports:
         - containerPort: 80
           name: http-web-svc
+        resources:
+          limits:
+            cpu: 500m
+            memory: 128Mi
